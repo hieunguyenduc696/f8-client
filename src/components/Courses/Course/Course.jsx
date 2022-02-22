@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Typography, Card, CardContent, CardActions, CardMedia, Button, ButtonBase } from '@material-ui/core'
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutlined'
 import { useHistory } from "react-router-dom"
-// import CustomizedAccordions from './Accordian'
 
 import useStyles from './styles'
 const Course = ({ course }) => {
@@ -11,8 +10,7 @@ const Course = ({ course }) => {
   const history = useHistory()
 
   const openPost = () => {
-    console.log(history)
-    // history.push(`/courses/${course.id}`)
+    history.push(`/courses/${course.id}`)
   }
   return (
     <Card className={classes.card} raised elevation={6}>

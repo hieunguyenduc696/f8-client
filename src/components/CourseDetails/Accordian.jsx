@@ -46,15 +46,40 @@ const AccordionDetails = withStyles((theme) => ({
   },
 }))(MuiAccordionDetails);
 
-export default function CustomizedAccordions() {
-  const [expanded, setExpanded] = React.useState('panel1');
+export default function CustomizedAccordions({ groupName, time, name }) {
+  const [expanded, setExpanded] = React.useState(0);
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
 
+  // for (let i = 0; i < time.length; i++) {
+  //   const element = time[i].map((item,index) => {
+      
+  //   })
+  // }
+  // for (let i = 0; i < name.length; i++) {
+  //   console.log(name[i]);
+  // }
+
   return (
-    <div>
+    <>
+    {groupName.map((groupname, index) => (
+      <Accordion square expanded={expanded === index} onChange={handleChange(index)} key={index}>
+        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+          <Typography>{groupname}</Typography>
+        </AccordionSummary>
+        {name[index].map((item,i) => (
+          <AccordionDetails key={i}>
+            <Typography>{item}</Typography>
+            <Typography>{time[index][i]}</Typography>
+          </AccordionDetails>
+        ))}
+      </Accordion>
+    ))}
+
+
+    {/* <div>
       <Accordion square expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
           <Typography>Collapsible Group Item #1</Typography>
@@ -83,14 +108,32 @@ export default function CustomizedAccordions() {
         <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
           <Typography>Collapsible Group Item #3</Typography>
         </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
+        <AccordionDetails style={{display: 'block'}}>
+          <div>
+            <Typography>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+              sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
+            </Typography>
+          </div>
+          <div>
+            <Typography>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+              sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
+            </Typography>
+          </div>
+          <div>
+            <Typography>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+              sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
+            </Typography>
+          </div>
+          
         </AccordionDetails>
       </Accordion>
-    </div>
+    </div> */}
+    </>
   );
 }

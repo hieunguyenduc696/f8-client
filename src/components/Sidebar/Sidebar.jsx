@@ -1,7 +1,7 @@
 import React from 'react'
 import { AppBar } from '@material-ui/core'
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined'
-import TimelineOutlinedIcon from '@material-ui/icons/TimelineOutlined'
+import LocalMoviesOutlinedIcon from '@material-ui/icons/LocalMoviesOutlined'
 import EmojiObjectsOutlined from '@material-ui/icons/EmojiObjectsOutlined'
 import ViewListOutlinedIcon from '@material-ui/icons/ViewListOutlined'
 
@@ -20,7 +20,7 @@ const Sidebar = () => {
             </button>
             <button className={classes.iconButton} size='small' >
                 <div style={{ width: '100%', padding: '5px 30px 10px', display: 'flex', alignItems: 'center', flexDirection: 'column', borderRadius: '18px'}}>
-                    <TimelineOutlinedIcon style={{display: 'block'}} />
+                    <LocalMoviesOutlinedIcon style={{display: 'block'}} />
                     <div style={{ display: 'flex' }}>
                         <span>Lộ</span>
                         <span style={{ marginLeft: '2px'}}>trình</span>
