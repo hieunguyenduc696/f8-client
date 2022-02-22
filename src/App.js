@@ -1,17 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Container, Grid } from '@material-ui/core'
+import { useDispatch } from 'react-redux'
+import { getCourses } from './actions/courses'
+
 import Navbar from './components/Navbar/Navbar'
 import Sidebar from './components/Sidebar/Sidebar'
-import Course from './components/Courses/Course/Course'
+import HomePage from './components/HomePage/HomePage'
 
 const App = () => {
+  const dispatch = useDispatch()
+  
+  useEffect(() => {
+    dispatch(getCourses())
+  }, [dispatch])
+  
   return (
     <>
       <Navbar />
       <Sidebar />
-      <Container style={{ marginLeft: '100px', width: 'calc(100% - 100px)' }}>
-        <Course />
-      </Container>
+        <div style={{ width: 'calc(100% - 120px)', marginLeft: '110px' }}>
+          <HomePage />
+        </div>
     </>
   )
 }
