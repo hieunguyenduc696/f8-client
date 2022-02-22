@@ -25,4 +25,20 @@ export default makeStyles((theme) => ({
         fontWeight: 'bold',
         border: '3px solid white'
     },
+    heading: {
+        display: 'flex',
+        alignItems: 'center',
+    },
+    headingTitle: {
+        fontWeight: 'bold',
+        marginRight: '10px'
+    },
+    newBtn: {
+        fontWeight: 'bold',
+        alignItems: 'start'
+    },
+    category: {
+        margin: '20px 0',
+        fontWeight: 'bold',
+    },
 }))

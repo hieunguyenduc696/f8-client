@@ -58,7 +58,7 @@ const HomeCarousel = (props) => {
 function Item(props) {
     const classes = useStyles()
     return (
-        <Paper elevation={6} style={{ borderRadius: '20px', width: '100%', margin: '1rem auto', background: props.item.background }}>
+        <Paper style={{ borderRadius: '20px', width: '100%', margin: '1rem auto', background: props.item.background }}>
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={6} className={classes.info}>
                     <Typography variant="h4" className={classes.title} gutterBottom>{props.item.title}</Typography>

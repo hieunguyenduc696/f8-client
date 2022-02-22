@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import { Container, Grid } from '@material-ui/core'
 import { useDispatch } from 'react-redux'
 import { getCourses } from './actions/courses'
 

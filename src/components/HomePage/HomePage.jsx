@@ -1,6 +1,8 @@
 import React from 'react'
 
 import HomeCarousel from './Carousel'
+import Itinerary from './Itinerary'
+import Courses from '../Courses/Courses'
 
 import useStyles from './styles'
 
@@ -10,6 +12,8 @@ const HomePage = () => {
   return (
       <>
         <HomeCarousel />
+        <Itinerary />
+        <Courses />
       </>
   )
 }

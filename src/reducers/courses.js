@@ -1,4 +1,4 @@
-export default (state = [], action) => {
+const courses = (state = [], action) => {
     switch (action.type) {
         case 'FETCH_COURSE':
             return action.payload;
@@ -8,3 +8,5 @@ export default (state = [], action) => {
             return state
     }
 }
+
+export default courses;
