@@ -28,7 +28,7 @@ const CourseDetails = () => {
   
   return (
       <>
-        <Grid container spacing={3} className={classes.container}>
+        {course && <Grid container spacing={3} className={classes.container}>
             <Grid item xs={12} sm={8} style={{ padding: '2rem 3rem'}}>
                 <Typography variant="h2" gutterBottom className={classes.name}>{course.name}</Typography>
                 <Typography variant="subtitle1" gutterBottom className={classes.content}>{course.content}</Typography>
@@ -53,10 +53,10 @@ const CourseDetails = () => {
                   <CustomizedAccordions groupName={course.curriculumGroupName} time={course.curriculumTime} name={course.curriculumName} />
                 </div>
 
-                {course?.demand?.length !== 0 && <div className={classes.demand}>
+                {course?.demand?.length !== 0 && course.demand && <div className={classes.demand}>
                   <Typography variant="h5" gutterBottom style={{ fontWeight: 'bold', marginBottom: '1rem' }}>Yêu cầu</Typography>                 
                   <Grid container spacing={3} style={{ marginTop: '0px'}}>
-                    {course.demand.map(d => (
+                    {course?.demand?.map(d => (
                       <Grid item xs={12} sm={12} key={d} style={{ display: 'flex', alignItems: 'center'}}>
                         <CheckIcon style={{ color: '#f05123' }} />
                         &nbsp;
@@ -95,7 +95,7 @@ const CourseDetails = () => {
                   </CardContent>
                 </Card>
             </Grid>
-        </Grid>
+        </Grid>}
       </>
   )
 }
