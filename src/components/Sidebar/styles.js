@@ -40,8 +40,13 @@ export default makeStyles((theme) => ({
         color: 'black',
         fontSize: '12px',
         fontWeight: 'bold',
+        textDecoration: 'none',
         '&:hover': {
             backgroundColor: '#ccc'
         }
+    },
+    active: {
+        backgroundColor: '#ccc',
+        textDecoration: 'none',
     }
 }))

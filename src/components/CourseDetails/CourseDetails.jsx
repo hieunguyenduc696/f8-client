@@ -28,51 +28,69 @@ const CourseDetails = () => {
   
   return (
       <>
-        <Grid container spacing={3}>
-            <Grid item xs={12} sm={9}>
-                <Typography variant="h2" gutterBottom>{course.name}</Typography>
-                <Typography variant="subtitle1" gutterBottom>{course.content}</Typography>
+        <Grid container spacing={3} className={classes.container}>
+            <Grid item xs={12} sm={8} style={{ padding: '2rem 3rem'}}>
+                <Typography variant="h2" gutterBottom className={classes.name}>{course.name}</Typography>
+                <Typography variant="subtitle1" gutterBottom className={classes.content}>{course.content}</Typography>
 
                 <div className={classes.topicList}>
-                  <Typography variant="h5">Bạn sẽ học được gì</Typography>
-                  <Grid container spacing={3}>
+                  <Typography variant="h5" style={{ fontWeight: 'bold', fontSize: '24px'}}>Bạn sẽ học được gì?</Typography>
+                  <Grid container spacing={3} style={{ marginTop: '0px'}}>
                     {course.topicList.map(topic => (
-                      <Grid item xs={12} sm={6} key={topic}>
-                        <CheckIcon />
-                        {topic}
+                      <Grid item xs={12} sm={6} key={topic} style={{ display: 'flex', alignItems: 'center'}}>
+                        <CheckIcon style={{ color: '#f05123' }} />
+                        &nbsp;
+                        <span style={{ fontSize: '17px', color: 'rgba(0,0,0,0.7)' }}>
+                          {topic}
+                        </span>
                       </Grid>
                     ))}
                   </Grid>
                 </div>
                 <div className={classes.curriculum}>
-                  <Typography variant="h5">Nội dung khóa học</Typography>
+                  <Typography variant="h5" gutterBottom style={{ fontWeight: 'bold', marginBottom: '1rem' }}>Nội dung khóa học</Typography>
                   {course.totalSession} • {course.totalLessions} • {course.totalTime}
                   <CustomizedAccordions groupName={course.curriculumGroupName} time={course.curriculumTime} name={course.curriculumName} />
                 </div>
+
+                {course?.demand?.length !== 0 && <div className={classes.demand}>
+                  <Typography variant="h5" gutterBottom style={{ fontWeight: 'bold', marginBottom: '1rem' }}>Yêu cầu</Typography>                 
+                  <Grid container spacing={3} style={{ marginTop: '0px'}}>
+                    {course.demand.map(d => (
+                      <Grid item xs={12} sm={12} key={d} style={{ display: 'flex', alignItems: 'center'}}>
+                        <CheckIcon style={{ color: '#f05123' }} />
+                        &nbsp;
+                        <span style={{ fontSize: '17px', color: 'rgba(0,0,0,0.7)' }}>
+                          {d}
+                        </span>
+                      </Grid>
+                    ))}
+                  </Grid>
+                </div>}
             </Grid>
-            <Grid item xs={12} sm={3}>
-                <Card>
+            <Grid item xs={12} sm={4}>
+                <Card className={classes.card}>
                   <CardMedia className={classes.media} image={course.url} alt={course.name} height={120} />
-                  <Typography variant="h2" gutterBottom>Đã đăng ký</Typography>
+                  <Typography variant="h2" gutterBottom className={classes.type}>Đã đăng ký</Typography>
                   <CardActions>
                     <Button variant="contained" className={classes.learnBtn}>Tiếp tục học</Button>
                   </CardActions>
-                  <CardContent>
+                  <CardContent className={classes.cardContent}>
                     <div className={classes.level}>
                       <PaletteIcon />
-                      <Typography variant="body2">{course.level}</Typography>
+                      <Typography variant="body2" style={{ fontSize: '16px', marginLeft: '5px'}}>{course.level}</Typography>
                     </div>
                     <div className={classes.totalLessions}>
                       <LocalMoviesOutlinedIcon />
-                      <Typography variant="body2">{course.totalSession}</Typography>
+                      <Typography variant="body2" style={{ fontSize: '16px', marginLeft: '5px'}}>{course.totalLession}</Typography>
                     </div>
                     <div className={classes.totalTime}>
                       <WatchLaterOutlinedIcon />
-                      <Typography variant="body2">{course.totalTime}</Typography>
+                      <Typography variant="body2" style={{ fontSize: '16px', marginLeft: '5px'}}>{course.totalTime}</Typography>
                     </div>
                     <div className={classes.learn}>
                       <BathtubOutlinedIcon />
-                      <Typography variant="body2">Học mọi lúc, mọi nơi</Typography>
+                      <Typography variant="body2" style={{ fontSize: '16px', marginLeft: '5px'}}>Học mọi lúc, mọi nơi</Typography>
                     </div>
                   </CardContent>
                 </Card>

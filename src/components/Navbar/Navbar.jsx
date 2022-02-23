@@ -1,6 +1,7 @@
 import React from 'react'
 import { Typography, AppBar } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search'
+import { Link } from 'react-router-dom'
 
 import useStyles from './styles'
 import logo from '../../images/logo.png'
@@ -10,7 +11,9 @@ const Navbar = () => {
       <>
         <AppBar position="static" color="inherit" className={classes.appBar}>
             <div className={classes.logo}>
-                <img src={logo} alt="logo" className={classes.logoImage} />
+                <Link to="/">
+                    <img src={logo} alt="logo" className={classes.logoImage} />
+                </Link>
                 <Typography variant="body1" className={classes.logoText}>Học Lập Trình Để Đi Làm</Typography>
             </div>
             <div className={classes.searchBar}>

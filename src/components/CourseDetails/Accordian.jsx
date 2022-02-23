@@ -4,6 +4,9 @@ import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
+import AddIcon from '@material-ui/icons/Add'
+import RemoveIcon from '@material-ui/icons/Remove'
+import PlayCircleFilledIcon from '@material-ui/icons/PlayCircleFilled'
 
 const Accordion = withStyles({
   root: {
@@ -48,92 +51,35 @@ const AccordionDetails = withStyles((theme) => ({
 
 export default function CustomizedAccordions({ groupName, time, name }) {
   const [expanded, setExpanded] = React.useState(0);
+  const [isAdd, setIsAdd] = React.useState(0);
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
+    setIsAdd(newExpanded ? panel : false);
   };
 
-  // for (let i = 0; i < time.length; i++) {
-  //   const element = time[i].map((item,index) => {
-      
-  //   })
-  // }
-  // for (let i = 0; i < name.length; i++) {
-  //   console.log(name[i]);
-  // }
-
   return (
-    <>
-    {groupName.map((groupname, index) => (
-      <Accordion square expanded={expanded === index} onChange={handleChange(index)} key={index}>
-        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography>{groupname}</Typography>
-        </AccordionSummary>
-        {name[index].map((item,i) => (
-          <AccordionDetails key={i}>
-            <Typography>{item}</Typography>
-            <Typography>{time[index][i]}</Typography>
-          </AccordionDetails>
-        ))}
-      </Accordion>
-    ))}
-
-
-    {/* <div>
-      <Accordion square expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography>Collapsible Group Item #1</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion square expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-        <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-          <Typography>Collapsible Group Item #2</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion square expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-        <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-          <Typography>Collapsible Group Item #3</Typography>
-        </AccordionSummary>
-        <AccordionDetails style={{display: 'block'}}>
-          <div>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-              sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-            </Typography>
-          </div>
-          <div>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-              sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-            </Typography>
-          </div>
-          <div>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-              sit amet blandit leo lobortis eget. Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
-            </Typography>
-          </div>
-          
-        </AccordionDetails>
-      </Accordion>
-    </div> */}
-    </>
+    <div style={{ marginTop: '1rem' }}>
+      {groupName.map((groupname, index) => (
+        <Accordion square expanded={expanded === index} onChange={handleChange(index)} key={index} style={{ border: 'none' }}>
+          <AccordionSummary aria-controls="panel1d-content" id="panel1d-header" style={{ borderRadius: '16px', margin: '5px 0', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', flex: '0.7' }}>
+              {isAdd === index ? <RemoveIcon style={{ color: '#f05123', marginRight: '5px' }} /> : <AddIcon style={{ color: '#f05123', marginRight: '5px' }} />}
+              <Typography variant="body1" style={{ fontWeight: 'bold', fontSize: '17px'}}>{groupname}</Typography>
+            </div>
+            <Typography variant="body1" style={{ flex: '0.3', justifyContent: 'flex-end', display: 'flex' }}>{name[index].length} bài học</Typography>          
+          </AccordionSummary>
+          {name[index].map((item,i) => (
+            <AccordionDetails key={i}>
+              <div style={{ display: 'flex', flex: '0.7' }}>
+                <PlayCircleFilledIcon style={{ color: '#f05123', marginRight: '5px', cursor: 'pointer' }} />
+                <Typography style={{ color: 'rgba(0,0,0,0.7)' }}>{item}</Typography>
+              </div>
+              <Typography style={{ color: 'rgba(0,0,0,0.7)', flex: '0.3', justifyContent: 'flex-end', display: 'flex' }}>{time[index][i]}</Typography>
+            </AccordionDetails>
+          ))}
+        </Accordion>
+      ))}
+    </div>
   );
 }
