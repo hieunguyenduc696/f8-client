@@ -51,12 +51,15 @@ export default makeStyles((theme) => ({
       },
       profile: {
         display: 'flex',
-        justifyContent: 'space-between',
-        width: '400px',
+        justifyContent: 'flex-end',
       },
-      userName: {
+      myCourse: {
         display: 'flex',
         alignItems: 'center',
+        marginRight: '40px',
+        color: 'rgba(0,0,0,0.7)',
+        fontWeight: 'bold',
+        cursor: 'pointer'
       },
       brandContainer: {
         display: 'flex',
@@ -65,6 +68,8 @@ export default makeStyles((theme) => ({
       purple: {
         color: theme.palette.getContrastText(deepPurple[500]),
         backgroundColor: deepPurple[500],
+        cursor: 'pointer',
+        position: 'relative',
       },
       box: {
         position: 'absolute',
@@ -103,4 +108,34 @@ export default makeStyles((theme) => ({
       googleButton: {
         marginBottom: theme.spacing(2),
       },
+      submenu: {
+        position: 'absolute',
+        top: '80%',
+        minWidth: '250px',
+        padding: theme.spacing(3),
+        cursor: 'pointer',
+        zIndex: 10
+      },
+      image: {
+        color: theme.palette.getContrastText(deepPurple[500]),
+        backgroundColor: deepPurple[500],
+        marginRight: '10px'
+      },
+      blog: {
+        marginTop: '5px',
+        borderBottom: '1px solid #ccc',
+        padding: '15px 0',
+        color: 'rgba(0,0,0,0.7)'
+      },
+      savedPost: {
+        marginTop: '5px',
+        borderBottom: '1px solid #ccc',
+        padding: '15px 0',
+        color: 'rgba(0,0,0,0.7)'
+      },
+      settings: {
+        marginTop: '5px',
+        padding: '15px 0 0',
+        color: 'rgba(0,0,0,0.7)'
+      }
 }))
