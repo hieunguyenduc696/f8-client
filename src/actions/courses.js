@@ -12,9 +12,17 @@ export const getCourses = () => async (dispatch) => {
 export const getCourse = (id) => async (dispatch) => {
     try {
         const { data } = await api.fetchCourse(id)
-        console.log(data)
         dispatch({ type: 'FETCH_COURSE', payload: data });
     } catch (error) {
         console.error(error)
+    }
+}
+
+export const registerCourse = (id) => async (dispatch) => {
+    try {
+        const { data } = await api.registerCourse(id)
+        dispatch({ type: 'REGISTER', payload: data });
+    } catch (error) {
+        console.log(error)
     }
 }

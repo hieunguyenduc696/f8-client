@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Grid, Typography, Button, CircularProgress, Card, CardContent, CardMedia, CardActions } from '@material-ui/core'
 import CheckIcon from '@material-ui/icons/Check'
@@ -9,22 +9,38 @@ import WatchLaterOutlinedIcon from '@material-ui/icons/WatchLaterOutlined'
 import BathtubOutlinedIcon from '@material-ui/icons/BathtubOutlined'
 
 import CustomizedAccordions from './Accordian'
-import { getCourse} from '../../actions/courses'
+import { getCourse, registerCourse } from '../../actions/courses'
 
 import useStyles from './styles'
 
 const CourseDetails = () => {
   const classes = useStyles()
   const dispatch = useDispatch()
+  const user = JSON.parse(localStorage.getItem('profile'))
   const { id } = useParams()
+  const history = useHistory()
   const { course } = useSelector(state => state.courses)
-  
+
   useEffect(() => {
     dispatch(getCourse(id))
-    console.log(id)
-  }, [id, dispatch])
-
+  }, [id, dispatch, course])
+  
+  const handleRegisterCourse = () => {
+    if(course.registers.find((c) => c === (user?.result?.googleId || user?.result?._id))) history.push(`/courses/${id}/learn`)
+    else {
+      dispatch(registerCourse(id))
+    }
+  }
+  
   if (!course) return <CircularProgress />
+
+  const Registered = () => {
+    if (course.registers.length > 0) {
+      if(course.registers.find((c) => c === (user?.result?.googleId || user?.result?._id))) return 'Tiếp tục học'
+      else return 'Đăng ký học'
+    }
+    return 'Đăng Ký Học'
+  }
   
   return (
       <>
@@ -73,7 +89,9 @@ const CourseDetails = () => {
                   <CardMedia className={classes.media} image={course.url} alt={course.name} height={120} />
                   <Typography variant="h2" gutterBottom className={classes.type}>Đã đăng ký</Typography>
                   <CardActions>
-                    <Button variant="contained" className={classes.learnBtn}>Tiếp tục học</Button>
+                    <Button variant="contained" className={classes.learnBtn} onClick={handleRegisterCourse}>
+                      <Registered />
+                    </Button>
                   </CardActions>
                   <CardContent className={classes.cardContent}>
                     <div className={classes.level}>
