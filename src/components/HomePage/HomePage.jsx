@@ -1,19 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import HomeCarousel from './Carousel'
 import Itinerary from './Itinerary'
 import Courses from '../Courses/Courses'
 
-import useStyles from './styles'
-
 const HomePage = () => {
-  const classes = useStyles()
+  const [cate, setCate] = useState('fe')
 
   return (
       <>
         <HomeCarousel />
-        <Itinerary />
-        <Courses />
+        <Itinerary setCate={setCate} />
+        <Courses cate={cate} />
       </>
   )
 }
