@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useState } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-
-import { getCourses } from './actions/courses'
 
 import Navbar from './components/Navbar/Navbar'
 import Sidebar from './components/Sidebar/Sidebar'
@@ -12,12 +9,7 @@ import LearnSession from './components/LearnSession/LearnSession'
 
 const App = () => {
   const [isOpen, setIsOpen] = useState(true)
-  const dispatch = useDispatch()
   
-  useEffect(() => {
-    dispatch(getCourses())
-  }, [dispatch])
-
   const Element = () => {
     return isOpen ? (
       <div style={{ width: 'calc(100% - 120px)', marginLeft: '105px' }}>

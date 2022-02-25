@@ -55,7 +55,7 @@ const AccordionDetails = withStyles((theme) => ({
   },
 }))(MuiAccordionDetails);
 
-export default function CustomizedAccordions({ id, groupName, time, name, setVideoId, links, available, state }) {
+export default function CustomizedAccordions({ id, groupName, time, name, setVideoId, links, available, state, setPos }) {
   const [expanded, setExpanded] = useState(0);
   const [isAdd, setIsAdd] = useState(0);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
@@ -69,6 +69,7 @@ export default function CustomizedAccordions({ id, groupName, time, name, setVid
 
   const handleClick = (i, j) => {
     dispatch(seenCourse(id, i, j))
+    setPos([i, j])
     setVideoId(links[i][j])
   }
   const userId = (user?.result?.googleId || user?.result?._id)

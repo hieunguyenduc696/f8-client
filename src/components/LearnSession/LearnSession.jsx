@@ -1,26 +1,29 @@
 import React, { useEffect, useState } from 'react'
-import { CircularProgress, AppBar, Typography, Grid, Paper, Box, Tabs, Tab, Container } from '@material-ui/core'
+import { CircularProgress, AppBar, Typography, Grid, Paper, Box, Tabs, Tab } from '@material-ui/core'
 import CloseIcon from '@material-ui/icons/Close'
 import HelpIcon from '@material-ui/icons/Help'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, Link } from 'react-router-dom'
 import { getCourse } from '../../actions/courses'
+import { getComment } from '../../actions/comments'
 
 import logoText from '../../images/f8_text_logo.png'
 import CircularStatic from './Progress'
 import CustomizedAccordions from './Accordian'
 import Overview from './Overview'
 import Related from './Related'
+import Comment from './Comment'
 
 import useStyles from './styles'
 
 const LearnSession = ({ setIsOpen }) => {
   const classes = useStyles()
   const { course } = useSelector(state => state.courses)
-  // console.log(course)
+
   const [videoId, setVideoId] = useState(course?.links[0][0])
   const [value, setValue] = useState(0);
+  const [pos, setPos] = useState([0, 0])
 
   const { id } = useParams()
   const dispatch = useDispatch()
@@ -28,6 +31,10 @@ const LearnSession = ({ setIsOpen }) => {
   useEffect(() => {
     dispatch(getCourse(id))
   }, [id, dispatch, videoId])
+
+  useEffect(() => {
+    dispatch(getComment(id, pos[0], pos[1]))
+  }, [id, pos, dispatch])
 
   useEffect(() => {
     setIsOpen(false);
@@ -42,9 +49,9 @@ const LearnSession = ({ setIsOpen }) => {
     <>
       <AppBar position="fixed" className={classes.appbar}>
         <div className={classes.logoSection}>
-          <div className={classes.logoImage}>
+          <Link className={classes.logoImage} to="/">
             <img src={logoText} alt="logo" className={classes.image} />
-          </div>
+          </Link>
           <Typography className={classes.logoText} variant="subtitle1">{course.name}</Typography>
         </div>
         <div className={classes.progress}>
@@ -69,6 +76,7 @@ const LearnSession = ({ setIsOpen }) => {
                   </Tabs>
               </Box>
               {value === 0 ? <Overview /> : <Related />}
+              {value === 0 && <Comment pos={pos} />}
           </div>
         </Grid>
         <Grid item xs={12} sm={4}>
@@ -76,7 +84,7 @@ const LearnSession = ({ setIsOpen }) => {
             <Typography variant="h6" className={classes.content}>Nội dung khóa học</Typography>
             <CloseIcon />
           </Paper>
-          <CustomizedAccordions id={id} state={course.state} available={course.available} setVideoId={setVideoId} links={course.links} groupName={course.curriculumGroupName} time={course.curriculumTime} name={course.curriculumName} />
+          <CustomizedAccordions setPos={setPos} id={id} state={course.state} available={course.available} setVideoId={setVideoId} links={course.links} groupName={course.curriculumGroupName} time={course.curriculumTime} name={course.curriculumName} />
         </Grid>
       </Grid>}
     </>
