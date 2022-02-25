@@ -5,6 +5,7 @@ const courses = (state = { isLoading: true, courses: [] }, action) => {
         case 'FETCH_COURSES':
             return { ...state, courses: action.payload }
         case 'REGISTER':
+        case 'SEEN':
             return { ...state, courses: state.courses.courses.map(course => course.id === action.payload.id ? action.payload : course)}
         default:
             return state

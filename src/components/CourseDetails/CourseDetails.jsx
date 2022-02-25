@@ -13,7 +13,7 @@ import { getCourse, registerCourse } from '../../actions/courses'
 
 import useStyles from './styles'
 
-const CourseDetails = () => {
+const CourseDetails = ({ setIsOpen }) => {
   const classes = useStyles()
   const dispatch = useDispatch()
   const user = JSON.parse(localStorage.getItem('profile'))
@@ -24,6 +24,10 @@ const CourseDetails = () => {
   useEffect(() => {
     dispatch(getCourse(id))
   }, [id, dispatch, course])
+
+  useEffect(() => {
+      setIsOpen(true);
+  }, [])  
   
   const handleRegisterCourse = () => {
     if(course.registers.find((c) => c === (user?.result?.googleId || user?.result?._id))) history.push(`/courses/${id}/learn`)

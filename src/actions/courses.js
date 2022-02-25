@@ -26,3 +26,12 @@ export const registerCourse = (id) => async (dispatch) => {
         console.log(error)
     }
 }
+
+export const seenCourse = (id, i, j) => async (dispatch) => {
+    try {
+        const { data } = await api.seenCourse(id, i, j)
+        dispatch({ type: 'SEEN', payload: data });
+    } catch (error) {
+        console.log(error)
+    }
+}

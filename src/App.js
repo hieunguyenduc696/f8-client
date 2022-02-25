@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
@@ -8,28 +8,64 @@ import Navbar from './components/Navbar/Navbar'
 import Sidebar from './components/Sidebar/Sidebar'
 import HomePage from './components/HomePage/HomePage'
 import CourseDetails from './components/CourseDetails/CourseDetails'
+import LearnSession from './components/LearnSession/LearnSession'
 
 const App = () => {
+  const [isOpen, setIsOpen] = useState(true)
   const dispatch = useDispatch()
   
   useEffect(() => {
     dispatch(getCourses())
   }, [dispatch])
+
+  const Element = () => {
+    return isOpen ? (
+      <div style={{ width: 'calc(100% - 120px)', marginLeft: '105px' }}>
+          <Switch>
+            <Route path="/" exact>
+              <HomePage setIsOpen={setIsOpen} />
+            </Route>
+            <Route path="/courses/:id" exact>
+              <CourseDetails setIsOpen={setIsOpen} />
+            </Route>
+            <Route path="/courses/:id/learn" exact>
+              <LearnSession setIsOpen={setIsOpen} />
+            </Route>
+          </Switch>
+      </div>
+    ) : (
+      <Switch>
+        <Route path="/" exact>
+          <HomePage setIsOpen={setIsOpen} />
+        </Route>
+        <Route path="/courses/:id" exact>
+          <CourseDetails setIsOpen={setIsOpen} />
+        </Route>
+        <Route path="/courses/:id/learn" exact>
+          <LearnSession setIsOpen={setIsOpen} />
+        </Route>
+      </Switch>
+    )
+  }
   
   return (
     <Router>
-      <Navbar />
-      <Sidebar />
-        <div style={{ width: 'calc(100% - 120px)', marginLeft: '105px' }}>
+      { isOpen && <Navbar />}
+      { isOpen && <Sidebar />}
+        {/* <div style={{ width: 'calc(100% - 120px)', marginLeft: '105px' }}>
           <Switch>
             <Route path="/" exact>
-              <HomePage />
+              <HomePage setIsOpen={setIsOpen} />
             </Route>
             <Route path="/courses/:id" exact>
-              <CourseDetails />
+              <CourseDetails setIsOpen={setIsOpen} />
+            </Route>
+            <Route path="/courses/:id/learn" exact>
+              <LearnSession setIsOpen={setIsOpen} />
             </Route>
           </Switch>
-        </div>
+        </div> */}
+      <Element />
     </Router>
   )
 }

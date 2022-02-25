@@ -1,11 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import HomeCarousel from './Carousel'
 import Itinerary from './Itinerary'
 import Courses from '../Courses/Courses'
 
-const HomePage = () => {
+const HomePage = ({ setIsOpen }) => {
   const [cate, setCate] = useState('fe')
+
+  useEffect(() => {
+      setIsOpen(true);
+  }, [])  
 
   return (
       <>
