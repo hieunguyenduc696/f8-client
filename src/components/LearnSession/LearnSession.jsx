@@ -1,23 +1,27 @@
 import React, { useEffect, useState } from 'react'
-import { CircularProgress, AppBar, Typography, Grid, Paper  } from '@material-ui/core'
+import { CircularProgress, AppBar, Typography, Grid, Paper, Box, Tabs, Tab, Container } from '@material-ui/core'
 import CloseIcon from '@material-ui/icons/Close'
 import HelpIcon from '@material-ui/icons/Help'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { getCourse } from '../../actions/courses'
 
 import logoText from '../../images/f8_text_logo.png'
 import CircularStatic from './Progress'
 import CustomizedAccordions from './Accordian'
+import Overview from './Overview'
+import Related from './Related'
 
 import useStyles from './styles'
 
 const LearnSession = ({ setIsOpen }) => {
   const classes = useStyles()
   const { course } = useSelector(state => state.courses)
-  console.log(course)
+  // console.log(course)
   const [videoId, setVideoId] = useState(course?.links[0][0])
+  const [value, setValue] = useState(0);
+
   const { id } = useParams()
   const dispatch = useDispatch()
 
@@ -29,8 +33,11 @@ const LearnSession = ({ setIsOpen }) => {
     setIsOpen(false);
   }, [setIsOpen]) 
 
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  }
+
   if (!course) return <CircularProgress />
-  console.log(videoId)
   return (
     <>
       <AppBar position="fixed" className={classes.appbar}>
@@ -48,13 +55,20 @@ const LearnSession = ({ setIsOpen }) => {
         </div>
       </AppBar>
 
-      <div className={classes.toolbar} />
-
       {course && <Grid container className={classes.container}>
         <Grid item xs={12} sm={8}>
           <div className={classes.videoWrapper}>
             {videoId !== undefined ? <iframe className={classes.video} width="100%" height="100%" src={`https://www.youtube.com/embed/${videoId}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
               : <iframe className={classes.video} width="100%" height="100%" src={`https://www.youtube.com/embed/${course?.links[0][0]}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>}
+          </div>
+          <div className={classes.category}>
+              <Box sx={{borderColor:'white'}}>
+                  <Tabs value={value} onChange={handleChange} aria-label="tabs">
+                      <Tab label="Tổng quan" sx={{ borderBottom: '1px solid #ccc' }} />
+                      <Tab label="Liên quan" />
+                  </Tabs>
+              </Box>
+              {value === 0 ? <Overview /> : <Related />}
           </div>
         </Grid>
         <Grid item xs={12} sm={4}>

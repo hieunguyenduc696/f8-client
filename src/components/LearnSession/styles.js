@@ -38,6 +38,9 @@ export default makeStyles((theme) => ({
     clue: {
         marginLeft: '10px'
     },
+    container: {
+        marginTop: '48px'
+    },
     videoWrapper: {
         width: '100%',
         height: '540px',
@@ -61,5 +64,18 @@ export default makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center !important',
         justifyContent: 'space-between !important',
+    },
+    category: {
+        padding: '0 80px '
+    },
+    overview: {
+        marginTop: '20px'
+    },
+    related: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        marginTop: '50px'
     }
 }))
