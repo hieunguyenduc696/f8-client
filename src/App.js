@@ -9,6 +9,7 @@ import CourseDetails from './components/CourseDetails/CourseDetails'
 import LearnSession from './components/LearnSession/LearnSession'
 import Itinerary from './components/Itinerary/Itinerary'
 import Frontend from './components/Frontend/Frontend'
+import Backend from './components/Backend/Backend'
 
 const App = () => {
   const [isOpen, setIsOpen] = useState(true)
@@ -26,9 +27,9 @@ const App = () => {
             <Route path="/itinerary/frontend" exact>
               <Frontend setIsOpen={setIsOpen} />
             </Route>
-            {/* <Route path="/itinerary/backend" exact>
+            <Route path="/itinerary/backend" exact>
               <Backend setIsOpen={setIsOpen} />
-            </Route> */}
+            </Route>
             <Route path="/courses/:id" exact>
               <CourseDetails setIsOpen={setIsOpen} />
             </Route>
@@ -48,9 +49,9 @@ const App = () => {
         <Route path="/itinerary/frontend" exact>
           <Frontend setIsOpen={setIsOpen} />
         </Route>
-        {/* <Route path="/itinerary/backend" exact>
+        <Route path="/itinerary/backend" exact>
           <Backend setIsOpen={setIsOpen} />
-        </Route> */}
+        </Route>
         <Route path="/courses/:id" exact>
           <CourseDetails setIsOpen={setIsOpen} />
         </Route>
