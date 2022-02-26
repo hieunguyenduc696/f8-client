@@ -13,13 +13,13 @@ const Sidebar = () => {
       <>
         <AppBar position='fixed' className={classes.sidebar} color="inherit">
             <button className={classes.addButton} > + </button>
-            <NavLink to="/" className={classes.iconButton} activeClassName={classes.active}>
+            <NavLink to="/" className={classes.iconButton} activeClassName={classes.active} exact>
                 <div style={{ padding: '5px 30px', display: 'flex', alignItems: 'center', flexDirection: 'column', borderRadius: '18px'}}>
                     <HomeOutlinedIcon style={{display: 'block'}} />
                     <div>Home</div>
                 </div>
             </NavLink>
-            <NavLink to="/shedule" className={classes.iconButton}>
+            <NavLink to="/itinerary" className={classes.iconButton} activeClassName={classes.active} exact>
                 <div style={{ width: '100%', padding: '5px 30px 10px', display: 'flex', alignItems: 'center', flexDirection: 'column', borderRadius: '18px'}}>
                     <LocalMoviesOutlinedIcon style={{display: 'block'}} />
                     <div style={{ display: 'flex' }}>
@@ -28,13 +28,13 @@ const Sidebar = () => {
                     </div>
                 </div>
             </NavLink>
-            <NavLink to="/courses" className={classes.iconButton}>
+            <NavLink to="/courses" className={classes.iconButton} activeClassName={classes.active} exact>
                 <div style={{ padding: '5px 30px', display: 'flex', alignItems: 'center', flexDirection: 'column', borderRadius: '18px'}}>
                     <EmojiObjectsOutlined style={{display: 'block'}} />
                     <div>Học</div>
                 </div>
             </NavLink>
-            <NavLink to="/blog" className={classes.iconButton}>
+            <NavLink to="/blog" className={classes.iconButton} activeClassName={classes.active} exact>
                 <div style={{ padding: '5px 30px', display: 'flex', alignItems: 'center', flexDirection: 'column', borderRadius: '18px'}}>
                     <ViewListOutlinedIcon style={{display: 'block'}} />
                     <div>Blog</div>
