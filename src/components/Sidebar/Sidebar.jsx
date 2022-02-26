@@ -19,7 +19,7 @@ const Sidebar = () => {
                     <div>Home</div>
                 </div>
             </NavLink>
-            <NavLink to="/itinerary" className={classes.iconButton} activeClassName={classes.active} exact>
+            <NavLink to="/itinerary" className={classes.iconButton} activeClassName={classes.active}>
                 <div style={{ width: '100%', padding: '5px 30px 10px', display: 'flex', alignItems: 'center', flexDirection: 'column', borderRadius: '18px'}}>
                     <LocalMoviesOutlinedIcon style={{display: 'block'}} />
                     <div style={{ display: 'flex' }}>

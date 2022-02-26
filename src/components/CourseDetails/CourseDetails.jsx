@@ -48,6 +48,7 @@ const CourseDetails = ({ setIsOpen }) => {
   
   return (
       <>
+        <div className={classes.toolbar} />
         {course && <Grid container spacing={3} className={classes.container}>
             <Grid item xs={12} sm={8} style={{ padding: '2rem 3rem'}}>
                 <Typography variant="h2" gutterBottom className={classes.name}>{course.name}</Typography>
