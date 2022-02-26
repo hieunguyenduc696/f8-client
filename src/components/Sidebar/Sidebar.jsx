@@ -11,7 +11,7 @@ const Sidebar = () => {
   const classes = useStyles()
   return (
       <>
-        <AppBar position="fixed" className={classes.sidebar} color="inherit">
+        <AppBar position='fixed' className={classes.sidebar} color="inherit">
             <button className={classes.addButton} > + </button>
             <NavLink to="/" className={classes.iconButton} activeClassName={classes.active}>
                 <div style={{ padding: '5px 30px', display: 'flex', alignItems: 'center', flexDirection: 'column', borderRadius: '18px'}}>

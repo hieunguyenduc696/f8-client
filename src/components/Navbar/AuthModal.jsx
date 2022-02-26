@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Fade, Backdrop, Box, Avatar, Button, Paper, Grid, Typography, Container, TextField } from '@material-ui/core'
+import { Modal, Fade, Backdrop, Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core'
 import { GoogleLogin } from 'react-google-login'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
@@ -13,7 +13,7 @@ import useStyles from './styles'
 
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: ''}
 
-const AuthModal = ({ open, setOpen, handleClose }) => {
+const AuthModal = ({ open, setOpen, handleClose, setMenuIsOpen }) => {
   const classes = useStyles()
   const [showPassword, setShowPassword] = useState(false)
   const [isSignup, setIsSignup] = useState(false)
@@ -30,6 +30,7 @@ const AuthModal = ({ open, setOpen, handleClose }) => {
         dispatch(signin(formData, history))
       }
       setOpen(false)
+      setMenuIsOpen(false)
   }
 
   const handleChange = (e) => {
@@ -47,6 +48,7 @@ const AuthModal = ({ open, setOpen, handleClose }) => {
       try {
         dispatch({ type: 'AUTH', data: { result, token } })
         setOpen(false)
+        setMenuIsOpen(false)
         history.push('/')
       } catch (error) {
         console.log(error)

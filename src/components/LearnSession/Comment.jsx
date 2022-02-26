@@ -15,7 +15,6 @@ const Comment = ({ pos }) => {
   const dispatch = useDispatch()
   const { id } = useParams()
   const Comment = useSelector(state => state.comment)
-  console.log(Comment)
 
   const handleChange = (e) => {
     setWonder(e.target.value)
@@ -30,6 +29,7 @@ const Comment = ({ pos }) => {
     setWonder('')
   }
   if (!Comment) return <CircularProgress />
+  
   return (
     <div className={classes.commentSection}>
       <form className={classes.form} onSubmit={handleSubmit}>

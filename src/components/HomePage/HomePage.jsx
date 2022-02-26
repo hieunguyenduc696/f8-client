@@ -7,7 +7,10 @@ import HomeCarousel from './Carousel'
 import Itinerary from './Itinerary'
 import Courses from '../Courses/Courses'
 
+import useStyles from './styles'
+
 const HomePage = ({ setIsOpen }) => {
+  const classes = useStyles()
   const [cate, setCate] = useState('fe')
   const dispatch = useDispatch()
   
@@ -21,6 +24,7 @@ const HomePage = ({ setIsOpen }) => {
 
   return (
       <>
+        <div className={classes.toolbar} />
         <HomeCarousel />
         <Itinerary setCate={setCate} />
         <Courses cate={cate} />

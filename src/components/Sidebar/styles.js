@@ -4,14 +4,13 @@ export default makeStyles((theme) => ({
     sidebar: {
         width: '90px',
         left: '0',
-        top: '100px',
-        bottom: '0',
+        marginTop: '80px',
         boxShadow: 'none',
         display: 'flex',
         alignItems: 'center',
         textAlign: 'center',
         flexDirection: 'column',
-        paddingRight: '0 !important'
+        paddingRight: '0 !important',
     },
     addButton: {
         borderRadius: '100rem',

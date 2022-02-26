@@ -50,7 +50,7 @@ const Navbar = () => {
 
     return (
       <>
-        <AppBar position="static" color="inherit" className={classes.appBar}>
+        <AppBar position="fixed" color="inherit" className={classes.appBar}>
             <div className={classes.logo}>
                 <Link to="/">
                     <img src={logo} alt="logo" className={classes.logoImage} />
@@ -80,7 +80,7 @@ const Navbar = () => {
                     <Button onClick={handleOpen} variant="contained" style={{ backgroundColor: '#f05123', color: 'white', fontWeight: 'bold', borderRadius: '100rem' }}>Đăng nhập</Button>
                 )}
             </Toolbar>
-            <AuthModal open={open} setOpen={setOpen} handleClose={handleClose} />
+            <AuthModal setMenuIsOpen={setMenuIsOpen} open={open} setOpen={setOpen} handleClose={handleClose} />
         </AppBar>
       </>
     )
