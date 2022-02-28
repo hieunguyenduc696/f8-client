@@ -1,8 +1,9 @@
+import { COMMENT, GET_COMMENT } from '../constants/constants'
 const commentReducer = (state = [], action) => {
     switch (action.type) {
-        case 'COMMENT':
+        case COMMENT:
             return [ action.payload, ...state ]
-        case 'GET_COMMENT':
+        case GET_COMMENT:
             return action.payload
         default:
             return state

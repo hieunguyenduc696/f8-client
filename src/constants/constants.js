@@ -1,0 +1,8 @@
+export const FETCH_COURSES = 'FETCH_COURSES'
+export const FETCH_COURSE = 'FETCH_COURSE'
+export const REGISTER = 'REGISTER'
+export const SEEN = 'SEEN'
+export const COMMENT = 'COMMENT'
+export const GET_COMMENT = 'GET_COMMENT'
+export const AUTH = 'AUTH'
+export const LOGOUT = 'LOGOUT'
