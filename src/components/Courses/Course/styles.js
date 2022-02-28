@@ -8,7 +8,7 @@ export default makeStyles((theme) => ({
         justifyContent: "space-between",
         borderRadius: "15px",
         height: "100%",
-        position: "relative"
+        
     },
     cardAction: {
         display: "block",
@@ -17,6 +17,7 @@ export default makeStyles((theme) => ({
     media: {
         height: 0,
         paddingTop: "56.25%",
+        position: "relative",
         backgroundColor: "rgba(0, 0, 0, 0.5)",
         animationDuration: '8s',
         '&:hover': {
@@ -37,8 +38,6 @@ export default makeStyles((theme) => ({
       },
     overlay: {
         position: "absolute",
-        top: "70px",
-        left: "90px",
         backgroundColor: "white",
         color: 'black',
         borderRadius: '100rem',
@@ -47,5 +46,8 @@ export default makeStyles((theme) => ({
         fontSize: '16px',
         outline: 'none',
         border: 'none',
+        top: '25%',
+        left: '50%',
+        transform: 'translate(-50%, -0%)'
     }
 }))

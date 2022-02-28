@@ -10,6 +10,7 @@ import facebook from '../../images/facebook.png'
 import useStyles from './styles'
 
 const HomeCarousel = (props) => {
+    const classes = useStyles()
     var items = [
         {
             title: 'Học ReactJS Miễn Phí',
@@ -45,7 +46,7 @@ const HomeCarousel = (props) => {
     ]
 
     return (
-        <Carousel style={{ borderRadius: '20px' }} navButtonsAlwaysVisible navButtonsProps={{          // Change the colors and radius of the actual buttons. THIS STYLES BOTH BUTTONS
+        <Carousel className={classes.carousel} style={{ borderRadius: '20px' }} navButtonsAlwaysVisible navButtonsProps={{          // Change the colors and radius of the actual buttons. THIS STYLES BOTH BUTTONS
             style: {
                 backgroundColor: 'white',
                 color: '#999'

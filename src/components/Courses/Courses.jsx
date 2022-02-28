@@ -6,7 +6,6 @@ import Course from './Course/Course'
 
 const Courses = ({ cate }) => {
   let { courses } = useSelector(state => state.courses.courses)
-  console.log(courses)
   if (!courses || courses.length === 0) {
     return <CircularProgress />
   }

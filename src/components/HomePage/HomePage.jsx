@@ -23,12 +23,12 @@ const HomePage = ({ setIsOpen }) => {
   }, [setIsOpen])  
 
   return (
-      <>
+      <div className={classes.homepage}>
         <div className={classes.toolbar} />
         <HomeCarousel />
         <Itinerary setCate={setCate} />
         <Courses cate={cate} />
-      </>
+      </div>
   )
 }
 

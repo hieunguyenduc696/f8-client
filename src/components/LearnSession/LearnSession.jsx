@@ -63,7 +63,7 @@ const LearnSession = ({ setIsOpen }) => {
       </AppBar>
 
       {course && <Grid container className={classes.container}>
-        <Grid item xs={12} sm={8}>
+        <Grid item xs={12} sm={12} md={8}>
           <div className={classes.videoWrapper}>
             {videoId !== undefined ? <iframe className={classes.video} width="100%" height="100%" src={`https://www.youtube.com/embed/${videoId}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
               : <iframe className={classes.video} width="100%" height="100%" src={`https://www.youtube.com/embed/${course?.links[0][0]}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>}
@@ -79,7 +79,7 @@ const LearnSession = ({ setIsOpen }) => {
               {value === 0 && <Comment pos={pos} />}
           </div>
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={12} md={4}>
           <Paper className={classes.paper}>
             <Typography variant="h6" className={classes.content}>Nội dung khóa học</Typography>
             <CloseIcon />

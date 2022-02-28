@@ -14,7 +14,7 @@ const Itinerary = () => {
     window.location.href = "https://www.facebook.com/groups/f8official"
   }
   return (
-    <>
+    <div className={classes.mainitinerary}>
         <div className={classes.toolbar} />
         <Container maxWidth="lg">
             <Typography className={classes.itinerary} variant="h4">Lộ trình học</Typography>
@@ -22,7 +22,7 @@ const Itinerary = () => {
             <Typography className={classes.text} variant="subtitle1">Ví dụ: Để đi làm với vị trí “Lập trình viên Front-end” bạn nên tập trung vào lộ trình “Front-end”.</Typography>
 
             <Grid container spacing={3} className={classes.container}>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={12} md={6}>
                     <Card className={classes.card}>
                         <Grid container spacing={2}>
                             <Grid item xs={12} sm={8}>
@@ -42,7 +42,7 @@ const Itinerary = () => {
                         </Grid>
                     </Card>
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={12} md={6}>
                     <Card className={classes.card}>
                         <Grid container spacing={2}>
                             <Grid item xs={12} sm={8}>
@@ -77,7 +77,7 @@ const Itinerary = () => {
                 </Grid>
             </Grid>
         </Container>
-    </>
+    </div>
   )
 }
 

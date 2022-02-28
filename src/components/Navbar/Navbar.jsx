@@ -9,10 +9,9 @@ import Submenu from './Submenu'
 import useStyles from './styles'
 import logo from '../../images/logo.png'
 
-const Navbar = () => {
+const Navbar = ({ open, setOpen }) => {
     const classes = useStyles()
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
-    const [open, setOpen] = useState(false)
     const handleOpen = () => setOpen(true)
     const handleClose = () => setOpen(false)
     const [menuIsOpen, setMenuIsOpen] = useState(false)
@@ -68,9 +67,6 @@ const Navbar = () => {
             <Toolbar className={classes.toolbar}>
                 {user ? (
                     <div className={classes.profile} ref={wrapperRef}>
-                        <Typography className={classes.myCourse} variant="subtitle1">
-                            Khóa học của tôi
-                        </Typography>
                         <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl} onClick={() => menuIsOpen ? setMenuIsOpen(false) : setMenuIsOpen(true)}>
                             {user.result.name.charAt(0)}
                         </Avatar>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Navbar from './components/Navbar/Navbar'
@@ -14,9 +15,10 @@ import Learn from './components/Learn/Learn'
 
 const App = () => {
   const [isOpen, setIsOpen] = useState(true)
-  
+  const [open, setOpen] = useState(false)
+  const matches = useMediaQuery('(max-width:955px)')
   const Element = () => {
-    return isOpen ? (
+    return (isOpen && !matches) ? (
       <div style={{ width: 'calc(100% - 120px)', marginLeft: '105px' }}>
           <Switch>
             <Route path="/" exact>
@@ -35,7 +37,7 @@ const App = () => {
               <Learn setIsOpen={setIsOpen} />
             </Route>
             <Route path="/courses/:id" exact>
-              <CourseDetails setIsOpen={setIsOpen} />
+              <CourseDetails setOpen={setOpen} setIsOpen={setIsOpen} />
             </Route>
             <Route path="/courses/:id/learn" exact>
               <LearnSession setIsOpen={setIsOpen} />
@@ -60,7 +62,7 @@ const App = () => {
           <Learn setIsOpen={setIsOpen} />
         </Route>
         <Route path="/courses/:id" exact>
-          <CourseDetails setIsOpen={setIsOpen} />
+          <CourseDetails setOpen={setOpen} setIsOpen={setIsOpen} />
         </Route>
         <Route path="/courses/:id/learn" exact>
           <LearnSession setIsOpen={setIsOpen} />
@@ -71,7 +73,7 @@ const App = () => {
   
   return (
     <Router>
-      { isOpen && <Navbar />}
+      { isOpen && <Navbar open={open} setOpen={setOpen} />}
       { isOpen && <Sidebar />}
       <Element />
       { isOpen && <Footer />}

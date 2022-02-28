@@ -21,7 +21,10 @@ export default makeStyles((theme) => ({
     logoText: {
         fontWeight: 'bold',
         marginLeft: '14px',
-        fontSize: '16px'
+        fontSize: '16px',
+        [theme.breakpoints.down('sm')]: {
+          display: 'none'
+        }
     },
     searchBar: {
         display: 'flex',
@@ -29,7 +32,10 @@ export default makeStyles((theme) => ({
         minWidth: '420px',
         borderRadius: '40px',
         border: '1px solid #ccc',
-        padding: theme.spacing(1)
+        padding: theme.spacing(1),
+        [theme.breakpoints.down('xs')]: {
+          display: 'none'
+        }
     },
     searchBarIcon: {
         marginLeft: '10px'

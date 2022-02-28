@@ -2,6 +2,9 @@ import { makeStyles } from '@material-ui/core/styles'
 
 export default makeStyles((theme) => ({
     toolbar: theme.mixins.toolbar,
+    mainitinerary: {
+
+    },
     itinerary: {
         fontWeight: 'bold',
         fontSize: '30px',
@@ -24,7 +27,14 @@ export default makeStyles((theme) => ({
     },
     cateText: {
         margin: '15px 0',
-        color: 'rgba(0,0,0,0.8)'
+        color: 'rgba(0,0,0,0.8)',
+        height: '200px',
+        [theme.breakpoints.down('lg')]: {
+            height: '200px'
+        },
+        [theme.breakpoints.down('sm')]: {
+            height: 'unset'
+        },
     },
     button: {
         backgroundColor: '#F05123',
@@ -45,6 +55,9 @@ export default makeStyles((theme) => ({
         marginTop: '40px',
         border: '5px solid #F05123',
         borderRadius: '100rem',
+        [theme.breakpoints.down('sm')]: {
+            display: 'none'
+        }
     },
     containerBottom: {
         marginTop: '8rem'

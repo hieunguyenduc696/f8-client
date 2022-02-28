@@ -11,6 +11,9 @@ export default makeStyles((theme) => ({
         textAlign: 'center',
         flexDirection: 'column',
         paddingRight: '0 !important',
+        [theme.breakpoints.down('sm')]: {
+            display: 'none'
+        }
     },
     addButton: {
         borderRadius: '100rem',

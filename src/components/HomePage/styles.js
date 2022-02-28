@@ -2,6 +2,11 @@ import { makeStyles } from '@material-ui/core/styles'
 
 export default makeStyles((theme) => ({
     toolbar: theme.mixins.toolbar,
+    homepage: {
+        [theme.breakpoints.down('sm')]: {
+            padding: '2rem'
+        }
+    },
     info: {
         display: 'flex',
         flexDirection: 'column',
@@ -28,6 +33,9 @@ export default makeStyles((theme) => ({
     heading: {
         display: 'flex',
         alignItems: 'center',
+        [theme.breakpoints.down('sm')]: {
+            marginTop: '1rem'
+        }
     },
     headingTitle: {
         fontWeight: 'bold',
@@ -41,4 +49,9 @@ export default makeStyles((theme) => ({
         margin: '20px 0',
         fontWeight: 'bold',
     },
+    carousel: {
+        [theme.breakpoints.down('sm')]: {
+            display: 'none'
+        }
+    }
 }))

@@ -13,7 +13,7 @@ import { getCourse, registerCourse } from '../../actions/courses'
 
 import useStyles from './styles'
 
-const CourseDetails = ({ setIsOpen }) => {
+const CourseDetails = ({ setIsOpen, setOpen }) => {
   const classes = useStyles()
   const dispatch = useDispatch()
   const user = JSON.parse(localStorage.getItem('profile'))
@@ -32,7 +32,11 @@ const CourseDetails = ({ setIsOpen }) => {
   const handleRegisterCourse = () => {
     if(course.registers.find((c) => c === (user?.result?.googleId || user?.result?._id))) history.push(`/courses/${id}/learn`)
     else {
-      dispatch(registerCourse(id))
+      if (user) {
+        dispatch(registerCourse(id))
+      } else {
+        setOpen(true)
+      }
     }
   }
   
@@ -45,7 +49,14 @@ const CourseDetails = ({ setIsOpen }) => {
     }
     return 'Đăng Ký Học'
   }
-  
+  // Đã đăng ký
+  const Freed = () => {
+    if (course.registers.length > 0) {
+      if(course.registers.find((c) => c === (user?.result?.googleId || user?.result?._id))) return 'Đã đăng ký'
+      else return 'Miễn phí'
+    }
+    return 'Miễn phí'
+  }
   return (
       <>
         <div className={classes.toolbar} />
@@ -92,7 +103,9 @@ const CourseDetails = ({ setIsOpen }) => {
             <Grid item xs={12} sm={4}>
                 <Card className={classes.card}>
                   <CardMedia className={classes.media} image={course.url} alt={course.name} height={120} />
-                  <Typography variant="h2" gutterBottom className={classes.type}>Đã đăng ký</Typography>
+                  <Typography variant="h2" gutterBottom className={classes.type}>
+                    <Freed />
+                  </Typography>
                   <CardActions>
                     <Button variant="contained" className={classes.learnBtn} onClick={handleRegisterCourse}>
                       <Registered />

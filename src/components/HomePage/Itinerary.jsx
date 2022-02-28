@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Typography, Button, Box, Tabs, Tab } from '@material-ui/core'
+import { Link } from 'react-router-dom'
 
 import useStyles from './styles'
 const Itinerary = ({ setCate }) => {
@@ -15,7 +16,7 @@ const Itinerary = ({ setCate }) => {
       <>
         <div className={classes.heading}>
             <Typography variant="h6" className={classes.headingTitle}>Lộ trình học</Typography>
-            <Button variant="contained" size="small" color='primary' className={classes.newBtn}>Mới</Button>
+            <Button to={"/itinerary"} component={Link} variant="contained" size="small" color='primary' className={classes.newBtn}>Mới</Button>
         </div>
         <div className={classes.category}>
             <Box sx={{ width: '100%' }}>
