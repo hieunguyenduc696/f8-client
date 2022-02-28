@@ -1,6 +1,7 @@
 import React from 'react';
 import Carousel from 'react-material-ui-carousel'
 import { Paper, Button, Grid, Typography } from '@material-ui/core'
+import { useHistory } from 'react-router-dom'
 import reactbanner from '../../images/reactbanner.png'
 import achieve from '../../images/achieve.png'
 import youtube from '../../images/youtube.png'
@@ -15,7 +16,8 @@ const HomeCarousel = (props) => {
             description: 'Khóa học ReactJS từ cơ bản tới nâng cao. Kết quả của khóa học này là bạn có thể làm hầu hết các dự án thường gặp với ReactJS.',
             buttonText: 'Đăng ký ngay',
             image: reactbanner,
-            background: 'linear-gradient(90deg, rgba(46,110,245,1) 0%, rgba(73,70,227,1) 35%, rgba(100,28,207,1) 100%)'
+            background: 'linear-gradient(90deg, rgba(46,110,245,1) 0%, rgba(73,70,227,1) 35%, rgba(100,28,207,1) 100%)',
+            to: '/courses/6'
         },
         {
             title: 'Thành Quả Của Học Viên',
@@ -29,14 +31,16 @@ const HomeCarousel = (props) => {
             description: 'F8 được nhắc tới ở mọi nơi, ở đâu có cơ hội việc làm cho nghề IT và có những con người yêu thích lập trình F8 sẽ ở đó.',
             buttonText: 'Truy cập kênh',
             image: youtube,
-            background: 'linear-gradient(90deg, rgba(255,36,93,1) 0%, rgba(254,86,51,1) 35%, rgba(254,142,7,1) 100%)'
+            background: 'linear-gradient(90deg, rgba(255,36,93,1) 0%, rgba(254,86,51,1) 35%, rgba(254,142,7,1) 100%)',
+            to: 'https://www.youtube.com/channel/UCNSCWwgW-rwmoE3Yc4WmJhw'
         },
         {
             title: 'F8 trên Facebook',
             description: 'F8 được nhắc tới ở mọi nơi, ở đâu có cơ hội việc làm cho nghề IT và có những con người yêu thích lập trình F8 sẽ ở đó.',
             buttonText: 'Truy cập nhóm',
             image: facebook,
-            background: 'linear-gradient(90deg, rgba(1,129,254,1) 0%, rgba(3,163,254,1) 35%, rgba(5,193,254,1) 100%)'
+            background: 'linear-gradient(90deg, rgba(1,129,254,1) 0%, rgba(3,163,254,1) 35%, rgba(5,193,254,1) 100%)',
+            to: 'https://www.facebook.com/groups/649972919142215'
         },
     ]
 
@@ -57,13 +61,21 @@ const HomeCarousel = (props) => {
 
 function Item(props) {
     const classes = useStyles()
+    const history = useHistory()
+    const handleDirect = (t) => {
+        if (t === '/courses/6') {
+            history.push(t)
+        } else {
+            window.location.href = t
+        }
+    }
     return (
         <Paper style={{ borderRadius: '20px', width: '100%', margin: '1rem auto', background: props.item.background }}>
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={6} className={classes.info}>
                     <Typography variant="h4" className={classes.title} gutterBottom>{props.item.title}</Typography>
                     <Typography variant="body1" className={classes.description} gutterBottom>{props.item.description}</Typography>
-                    <Button variant="outlined" size="small" className={classes.button}>{props.item.buttonText}</Button>
+                    <Button variant="outlined" size="small" className={classes.button} onClick={() => handleDirect(props.item.to)}>{props.item.buttonText}</Button>
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <img src={props.item.image} alt={props.item.title} />
