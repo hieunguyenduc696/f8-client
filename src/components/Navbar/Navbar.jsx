@@ -3,6 +3,7 @@ import { Typography, AppBar, Toolbar, Avatar, Button } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search'
 import { useDispatch } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
+import decode from 'jwt-decode'
 import AuthModal from './AuthModal'
 import Submenu from './Submenu'
 
@@ -40,9 +41,12 @@ const Navbar = ({ open, setOpen }) => {
     }
 
     useEffect(() => {
-        // const token = user?.token
+        const token = user?.token
 
-        //JWT...
+        if(token) {
+            const decodedToken = decode(token)
+            if (decodedToken.exp * 1000 < new Date().getTime()) logout()
+        }
 
         setUser(JSON.parse(localStorage.getItem('profile')))
     }, [location])
